@@ -1,0 +1,22 @@
+<div class="pl-3 pt-3">
+  <h1><%= @list.name %></h1>
+</div>
+<div class="pl-3">
+  <div class="form-actions btn btn-warning mb-3">
+    <%= link_to 'Add a bookmark', new_list_bookmark_path(@list) %>
+  </div>
+  <div class="form-actions btn btn-warning mb-3">
+    <%= link_to 'Back', lists_path %>
+  </div>
+</div>
+
+<ol><% @list.bookmarks.each do |bookmark| %>
+  <li><b><%= bookmark.comment %></b> <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
+    <div>
+      <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %> width="400" height="400">
+      <p><%= bookmark.movie.title %></p>
+      <p><%= bookmark.movie.overview %></p>
+    </div>
+  </li>
+<% end %></ol>
+
