@@ -1,10 +1,15 @@
 <h1>Lists</h1>
 
-<ol><% @lists.each do |list| %>
-  <li><%= link_to list.name, list_path(list) %></li>
-<% end %></ol>
+<div class="card" style="width: 18rem;">
+  <% @lists.each do |list| %>
+    <%= cl_image_tag list.photo.key, width: 400, height: 300, crop: :fill %>
+    <div class="card-body">
+      <h5 class="card-title"><%= list.name %></h5>
+    </div>
+    <%= link_to 'Delete', list_path(list), method: :delete, data: { confirmation: 'Are you sure?'}, class: 'card-remove-link' %>
+  <% end %>
+</div>
 
 <%= link_to 'Add a list', new_list_path %>
 
-<%= cl_image_tag("tey3vzqetc4pnzwbv8lt",
-      width: 400, height: 300, crop: :fill) %>
+

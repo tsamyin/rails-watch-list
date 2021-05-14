@@ -10,13 +10,12 @@
   </div>
 </div>
 
-<ol><% @list.bookmarks.each do |bookmark| %>
-  <li><b><%= bookmark.comment %></b> <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
-    <div>
-      <img src="<% bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %> width="400" height="400">
-      <p><%= bookmark.movie.title %></p>
-      <p><%= bookmark.movie.overview %></p>
+<div class="card" style="width: 18rem;">
+  <% @list.bookmarks.each do |bookmark| %>
+    <%= cl_image_tag bookmark.photo.key, height: 300, width: 400, crop: :fill %>
+    <div class="card-body">
+      <h5 class="card-title"><%= bookmark.movie.title %></h5>
+      <p class="card-overview"><%= bookmark.movie.overview %></p>
     </div>
-  </li>
-<% end %></ol>
-
+  <% end %>
+</div>
