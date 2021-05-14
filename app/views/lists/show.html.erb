@@ -13,7 +13,7 @@
 <ol><% @list.bookmarks.each do |bookmark| %>
   <li><b><%= bookmark.comment %></b> <%= link_to 'Delete', bookmark_path(bookmark), method: :delete, data: { confirm: 'Are you sure?' } %>
     <div>
-      <img src="<%= bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %> width="400" height="400">
+      <img src="<% bookmark.movie.poster_url %>" alt="<%= bookmark.movie.title %> width="400" height="400">
       <p><%= bookmark.movie.title %></p>
       <p><%= bookmark.movie.overview %></p>
     </div>
